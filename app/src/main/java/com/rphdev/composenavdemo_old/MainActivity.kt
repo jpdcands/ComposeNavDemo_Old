@@ -1,16 +1,20 @@
 package com.rphdev.composenavdemo_old
 
 import android.os.Bundle
+import android.widget.Button
+//import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.compiler.plugins.kotlin.EmptyFunctionMetrics.composable
+import androidx.compose.material.Button
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.Composable
+import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.font.FontWeight
@@ -18,10 +22,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.NavController
+import androidx.navigation.navArgument
+import androidx.navigation.NavType
+import androidx.navigation.compose.composable
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.rphdev.composenavdemo_old.NavGraphs.root
+import com.rphdev.composenavdemo_old.destinations.LoginScreenDestination
+import com.rphdev.composenavdemo_old.destinations.ScreenOneDestination
+import com.rphdev.composenavdemo_old.destinations.ScreenTwoDestination
 import com.rphdev.composenavdemo_old.ui.theme.ComposeNavDemo_OldTheme
+import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +64,7 @@ class MainActivity : ComponentActivity() {
             }
             TopAppBar(
                 title = {
-                    Text(text = "Compose - Old Navigation")
+                    Text(text = "Compose = Old Navigation")
                 })
         }
     }
@@ -76,7 +91,7 @@ fun LoginScreen(
                 .padding(15.dp)
         )
         Button(onClick = {
-           navController.navigate(NavRoutes.ScreenOne.route)
+            navController.navigate(NavRoutes.ScreenOne.route)
         }) {
             Text("Go to Screen 1")
         }
